@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css?family=Chakra+Petch&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles/normalize.css" />
+    <link class="estiloDefinido" rel="stylesheet" href="styles/light-theme.css" />
+
+    <title>GifOS Proyect</title>
+  </head>
+  <body>
+    <header>
+      <div class="banner">
+        <p>¡Bienvenidos/as a Guifos.com! ——————Donde los gifs están.////// Número de visitas: 12.765.803</p>
+      </div>
+      <div class="top">
+        <div class="logo">
+          <img src="images/gifOF_logo.png" alt="logo gifOS light theme" />
+        </div>
+        <div class="buttons">
+          <ul>
+            <li><a class="boton-1 crear" href="./creargifo.html">Crear Guifos</a></li>
+
+            <li class="menuDesplegableDropdown">
+              <a class="boton-2 elegir-tema NoEsVisible" id="flecha-dropdown" href="#"
+                >Elegir tema <img class="flechita" src="./images/dropdown.svg" alt="dropdown"
+              /></a>
+
+              <div>
+                <ul class="submenu">
+                  <li id="light"><a href="#">Sailor Day</a></li>
+                  <li id="dark"><a href="#">Sailor Night</a></li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <a class="link" href="#"><span>M</span>is Guifos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <section>
+      <div class="buscar">
+        <div class="contenedor">
+          <div class="titulo">
+            <h3>Buscar</h3>
+          </div>
+          <div class="busqueda">
+            <input type="text" id="palabraBusqueda" placeholder="Busca gifs, hashtags, temas, busca lo que quieras…" />
+            <div class="boton-submit" id="boton-buscador-palabras">
+              <a href="#" class="submit">
+                <div class="buscar-boton">
+                  <div class="lupa">
+                    <img src="./images/lupa_inactive.svg" alt="lupa-inactiva" />
+                  </div>
+                  <div class="etiqueta">
+                    <h3>Buscar</h3>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="botones-tag">
+        <button class="boton-tag-1"></button>
+        <button class="boton-tag-2"></button>
+        <button class="boton-tag-3"></button>
+      </div>
+      <div class="contenedor-opciones-de-busqueda inactive"></div>
+    </section>
+    <section class="sugerencias-section">
+      <div class="te-sugerimos">
+        <h3>Hoy te sugerimos</h3>
+      </div>
+      <div class="resultados-busqueda" id="resultados-busqueda"></div>
+    </section>
+    <section class="tendencias-section">
+      <div class="te-sugerimos" id="heading-resultado-busquedas">
+        <h3>Tendencias</h3>
+      </div>
+      <div class="tendencias" id="tendencias"></div>
+    </section>
+    <script src="js/giphyAPI.js"></script>
+    <script src="js/UI.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
