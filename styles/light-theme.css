@@ -317,6 +317,10 @@ div.buscar-boton {
 .cabecera {
   background-image: linear-gradient(270deg, #f7c9f3 0%, #4180f6 100%);
   padding: 3px;
+  opacity: 0;
+  position: absolute;
+  bottom: 3px;
+  width: 95%;
 }
 
 img.boton-cerrar {
@@ -343,6 +347,11 @@ img.boton-cerrar {
   font-weight: bold;
   padding: 4px 4px 2px 4px;
   margin-bottom: 16px;
+  position: relative;
+}
+
+.tendencias-gifs:hover .cabecera {
+  opacity: 1;
 }
 
 div#tendencias {

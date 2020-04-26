@@ -91,6 +91,7 @@ function capturarGif(e) {
     objetoGrabacion.startRecording();
     document.querySelector(".timing").style.display = "block";
     document.querySelector("#banner-antesDeEmpezar").innerHTML = "Capturando Tu Guifo";
+    document.querySelector(".botones-timing-capturar").style.height = "55px";
     listoClasses = document.querySelectorAll(".listo");
     for (let i = 0; i < 2; i++) {
       listoClasses[i].style.display = "none";
@@ -157,3 +158,17 @@ function GetGifs(amount, tipoDePeticion) {
 //GetGifs(24, "t");
 document.querySelector(".tendencias-section").lastElementChild.innerHTML = "";
 ui.mostrarElRepositorioDeMisGifos();
+
+if (localStorage.getItem("click") === "IrAMisGifs") {
+  document.querySelector(".crear-gifos").style.display = "none";
+  document.querySelector(".flecha").style.display = "none";
+  console.log("IrAMisGifs");
+  document.querySelector(".crear").addEventListener("click", function () {
+    document.querySelector(".crear-gifos").style.display = "block";
+    document.querySelector(".buttons").style.display = "none";
+  });
+} else {
+  document.querySelector(".buttons").style.display = "none";
+
+  console.log("crearGifo");
+}

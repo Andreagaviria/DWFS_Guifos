@@ -5,6 +5,7 @@ let sailorNight = document.querySelector("#dark");
 let campoBuscar = document.querySelector("#palabraBusqueda");
 botonBuscar = document.querySelector("#boton-buscador-palabras");
 let botonesTagdeBusqueda;
+let clickUsuario;
 ////////////////////////////////variables///////////////////////////////////////////
 var Estado;
 //////////////////////////////////event listeners//////////////////////////////////
@@ -15,6 +16,12 @@ sailorNight.addEventListener("click", temaOscuro);
 
 campoBuscar.addEventListener("keyup", cambiarEstiloBotonDeBusqueda);
 botonBuscar.addEventListener("click", busquedaDeGifs);
+document.querySelector(".crear").addEventListener("click", function () {
+  localStorage.setItem("click", "crearGifo");
+});
+document.querySelector(".link").addEventListener("click", function () {
+  localStorage.setItem("click", "IrAMisGifs");
+});
 ///////////////////////////////////instanciacion de clases//////////////////////////
 let ui = new UI();
 let gif = new gifosAPI();
