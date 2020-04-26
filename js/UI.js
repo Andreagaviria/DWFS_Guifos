@@ -32,7 +32,7 @@ class UI {
       let footer = title.substring(0, title.indexOf("GIF")).replace(/ /g, " #");
       gifsResultados.innerHTML += `<div class="tendencias-gifs"><img src="${gif[i].images.original.url}" alt="${
         gif[i].title
-      }"><div class="cabecera">#${footer.substring(0, footer.length / 2)}</div></div>`;
+      }"><div class="cabecera-especial">#${footer.substring(0, footer.length / 2)}</div></div>`;
     }
   }
 
