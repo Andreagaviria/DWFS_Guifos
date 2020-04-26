@@ -4,6 +4,15 @@
   height: 24px;
 }
 
+.header-crear-gifos {
+  display: flex;
+  align-items: center;
+}
+
+img.logo-crear {
+  padding-left: 7px;
+}
+
 .header-creacion {
   margin-top: 35px;
   display: flex;

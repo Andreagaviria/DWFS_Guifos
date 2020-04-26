@@ -350,6 +350,10 @@ img.boton-cerrar {
   margin-bottom: 16px;
 }
 
+.tendencias-gifs:hover .cabecera-especial {
+  opacity: 1;
+}
+
 div#tendencias {
   display: flex;
   flex-wrap: wrap;
