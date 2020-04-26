@@ -8,11 +8,40 @@ let botonCapturar = document.querySelector(".capturar-boton");
 let camaraIcon = document.querySelector(".camarita");
 let botonListo;
 let urlMyGifo;
+let botonDescargar;
+let botonListoSubiendo;
+let botonCopiar;
 ////////////////////////////////eventos/////////////////////////////////////////
 botonComenzar.addEventListener("click", abrirVideo);
 botonCapturar.addEventListener("click", capturarGif);
-
 ////////////////////////////////funciones/////////////////////////////////////////
+function guardarGifsEnMisGifos() {
+  var contenidoLocalStorage = localStorage.getItem("elRespositorioDeMisGifos");
+  let elRespositorioDeMisGifos;
+  if (contenidoLocalStorage === null) {
+    elRespositorioDeMisGifos = [];
+  } else {
+    elRespositorioDeMisGifos = JSON.parse(contenidoLocalStorage);
+  }
+  if (elRespositorioDeMisGifos.indexOf(urlMyGifo) === -1) {
+    elRespositorioDeMisGifos.push(urlMyGifo);
+    localStorage.setItem("elRespositorioDeMisGifos", JSON.stringify(elRespositorioDeMisGifos));
+  }
+}
+
+function copiarGif() {
+  navigator.clipboard
+    .writeText(urlMyGifo)
+    .then(() => {})
+    .catch((err) => {
+      console.log("Ha fallado la copia del Gif");
+    });
+}
+
+function descargarGif() {
+  invokeSaveAsDialog(objetoGrabacion.getBlob(), "andreaprueba.gif");
+}
+
 function terminarGif() {
   console.log("holaTerminarGif");
   document.querySelector(".vista-previa-botones").style.display = "flex";
@@ -80,8 +109,11 @@ function subirGuifo() {
   gif.subirGuifo(formulario).then(function (guardado) {
     console.log(guardado);
     gif.GetMyGif(guardado.urlGetGifByID).then(function (retornado) {
-      urlMyGifo = retornado.gif.data.url;
+      //urlMyGifo = retornado.gif.data.url;
+      urlMyGifo = retornado.gif.data.images.original.url;
       console.log(retornado.gif.data.url);
+      console.log(retornado.gif.data.images.original.url);
+      guardarGifsEnMisGifos();
       document.querySelector("#banner-antesDeEmpezar").innerHTML = "Guifo Subido Con Éxito";
       document.querySelector(".guifo-subido").style.display = "block";
       document.querySelector(".prueba-captura").style.width = "371px";
@@ -93,6 +125,19 @@ function subirGuifo() {
       document.querySelector(".subiendo-guifo").style.display = "none";
       document.querySelector(".boton-final-dos").style.display = "none";
       document.querySelector(".contenedor-imagen-previa").style.display = "block";
+      document.querySelector(".chequeo").style.height = "391px";
+      document.querySelector(".chequeo").style.width = "721px";
+      botonDescargar = document.querySelector(".descargar-guifo");
+      botonDescargar.addEventListener("click", descargarGif);
+      botonListoSubiendo = document.querySelector(".listo-final");
+      botonListoSubiendo.addEventListener("click", function () {
+        location.reload();
+      });
+      botonCopiar = document.querySelector(".copiar-enlace");
+      botonCopiar.addEventListener("click", copiarGif);
+      document.querySelector(".tendencias-section").style.display = "block";
+      document.querySelector(".tendencias-section").lastElementChild.innerHTML = "";
+      ui.mostrarElRepositorioDeMisGifos();
     });
   });
 }
@@ -109,4 +154,6 @@ function GetGifs(amount, tipoDePeticion) {
   });
 }
 
-GetGifs(24, "t");
+//GetGifs(24, "t");
+document.querySelector(".tendencias-section").lastElementChild.innerHTML = "";
+ui.mostrarElRepositorioDeMisGifos();

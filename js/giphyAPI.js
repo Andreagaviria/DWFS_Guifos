@@ -30,6 +30,7 @@ class gifosAPI {
       body: formulario,
       json: true,
     };
+
     const apiRespuesta = await this.peticionGuardar(`https://upload.giphy.com/v1/gifs?api_key=${key}`, objetoApi);
     //console.log(await apiRespuesta.data.id);
     let urlGetGifByID = await `https://api.giphy.com/v1/gifs/${apiRespuesta.data.id}?api_key=7107gIYllETNXLPM3ARVtGMcISbn6dCy`;

@@ -416,7 +416,7 @@ div.guifo-subido {
   margin-bottom: 16px;
 }
 
-.guifo-subido a {
+.guifo-subido button {
   font-family: "Chakra Petch", sans-serif;
   font-size: 16px;
   color: #110038;
@@ -426,23 +426,34 @@ div.guifo-subido {
   text-decoration: none;
 }
 
-a.copiar-enlace {
+button.copiar-enlace {
   background: #fff4fd;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   padding: 9px 56.5px;
+  margin-bottom: 14px;
 }
 
-a.descargar-guifo {
+button.descargar-guifo {
   background: #fff4fd;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   padding: 9px 68.5px;
+  margin-bottom: 111px;
 }
 
-a.listo-final {
+button.listo-final {
   background: #f7c9f3;
   border: 1px solid #110038;
   box-shadow: inset -1px -1px 0 0 #997d97, inset 1px 1px 0 0 #ffffff;
   padding: 9px 53.5px;
+  margin-bottom: 44px;
+  position: absolute;
+  right: 0;
+}
+
+.guifo-subido {
+  position: absolute;
+  top: 284px;
+  right: 376px;
 }

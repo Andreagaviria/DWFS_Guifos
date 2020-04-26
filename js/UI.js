@@ -121,4 +121,24 @@ class UI {
       };
     });
   }
+
+  mostrarElRepositorioDeMisGifos() {
+    let contenidoLocalStorage = localStorage.getItem("elRespositorioDeMisGifos");
+    let elRespositorioDeMisGifos;
+    if (contenidoLocalStorage === null) {
+      elRespositorioDeMisGifos = [];
+    } else {
+      elRespositorioDeMisGifos = JSON.parse(contenidoLocalStorage);
+    }
+    // console.log(elRespositorioDeMisGifos);
+    // console.log(document.querySelector(".tendencias-section").lastElementChild);
+
+    let NuevosGifs = document.querySelector(".tendencias-section").lastElementChild;
+
+    for (let i = 0; i < elRespositorioDeMisGifos.length; i++) {
+      //console.log(elRespositorioDeMisGifos[i]);
+
+      NuevosGifs.innerHTML += `<div class="tendencias-gifs"><img src="${elRespositorioDeMisGifos[i]}" alt="MiGifo"></div>`;
+    }
+  }
 }
