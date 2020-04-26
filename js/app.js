@@ -97,6 +97,7 @@ function cambiarEstiloBotonDeBusqueda() {
   } else {
     contenedorDeOpcionesDeBusqueda.classList.remove("active");
     contenedorDeOpcionesDeBusqueda.classList.add("inactive");
+    botonesTagdeBusqueda = document.querySelector(".botones-tag");
     botonesTagdeBusqueda.style.display = "none";
     botonesTagdeBusqueda.style.marginBottom = "";
     botonesTagdeBusqueda.style.marginTop = "";

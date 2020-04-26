@@ -11,10 +11,13 @@ let urlMyGifo;
 let botonDescargar;
 let botonListoSubiendo;
 let botonCopiar;
+
 ////////////////////////////////eventos/////////////////////////////////////////
 botonComenzar.addEventListener("click", abrirVideo);
 botonCapturar.addEventListener("click", capturarGif);
+
 ////////////////////////////////funciones/////////////////////////////////////////
+
 function guardarGifsEnMisGifos() {
   var contenidoLocalStorage = localStorage.getItem("elRespositorioDeMisGifos");
   let elRespositorioDeMisGifos;
@@ -162,6 +165,8 @@ ui.mostrarElRepositorioDeMisGifos();
 if (localStorage.getItem("click") === "IrAMisGifs") {
   document.querySelector(".crear-gifos").style.display = "none";
   document.querySelector(".flecha").style.display = "none";
+  document.querySelector(".top").style.marginBottom = "35px";
+  document.querySelector(".link").style.color = "grey";
   console.log("IrAMisGifs");
   document.querySelector(".crear").addEventListener("click", function () {
     document.querySelector(".crear-gifos").style.display = "block";
