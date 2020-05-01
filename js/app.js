@@ -26,12 +26,39 @@ document.querySelector(".link").addEventListener("click", function () {
 let ui = new UI();
 let gif = new gifosAPI();
 ////////////////////////////////funciones/////////////////////////////////////////
+function verMasBoton(e) {
+  // let tituloDeCadaGif = document.querySelector(".cabecera").textContent.replace("#", "");
+  let cabeceraDeCadaGif = e.target.parentElement.parentElement.firstElementChild.firstElementChild.textContent;
+  let palabraCamelcase = unCamelCase(cabeceraDeCadaGif.replace("#", ""));
+  busquedaDeGifsBotonVerMas(palabraCamelcase);
+}
+
+function unCamelCase(str) {
+  return (
+    str
+      // insert a space between lower & upper
+      .replace(/([a-z])([A-Z])/g, "$1 $2")
+      // space before last upper in a sequence followed by lower
+      .replace(/\b([A-Z]+)([A-Z])([a-z])/, "$1 $2$3")
+      // uppercase the first character
+      .replace(/^./, function (str) {
+        return str.toUpperCase();
+      })
+  );
+}
+
 function GetGifs(amount, tipoDePeticion) {
   let serverResponse = gif.getGif(amount);
 
   serverResponse.then((gifEntrantes) => {
     if (tipoDePeticion === "s") {
       ui.displaySuggestions(gifEntrantes.gif.data);
+      setTimeout(function () {
+        let botonesVerMas = document.querySelectorAll(".boton-vermas");
+        for (let botonsitoAzul of botonesVerMas) {
+          botonsitoAzul.addEventListener("click", verMasBoton);
+        }
+      }, 1000);
     } else {
       ui.displayTrends(gifEntrantes.gif.data);
     }
@@ -138,7 +165,22 @@ function busquedaDeGifs() {
     ui.VisualizacionEstiloResultadosDeBusqueda(gifEntrante);
   });
 }
+function busquedaDeGifsBotonVerMas(palabraClave) {
+  // console.log(campoBuscar.value);
+  let respuestaServidor = gif.busquedaGifPorNombre(palabraClave);
+  let seccionSugerencias = document.querySelector(".sugerencias-section");
+  contenedorDeOpcionesDeBusqueda.style.display = "none";
+  botonesTagdeBusqueda = document.querySelector(".botones-tag");
+  botonesTagdeBusqueda.style.display = "block";
+  botonesTagdeBusqueda.style.marginBottom = "54px";
+  botonesTagdeBusqueda.style.marginTop = "12px";
+  seccionSugerencias.style.display = "none";
+  respuestaServidor.then((gifEntrante) => {
+    ui.mostrarResultadoDeGifBuscado(gifEntrante.gif.data);
 
+    ui.VisualizacionEstiloResultadosDeBusqueda(gifEntrante);
+  });
+}
 //////////////////////////////////llamado a funciones///////////////////////////////////////
 GetGifs(4, "s");
 GetGifs(24, "t");

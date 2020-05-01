@@ -19,7 +19,7 @@ class UI {
       </div>
       <div class="contenedor-gif">
       <img src="${gif[i].images.original.url}" alt="${gif[i].title}">
-      <a class="boton-vermas" href="#"><button>Ver mas...</button></a>
+      <button class="boton-vermas">Ver mas...</button></a>
       </div>
      </div>`;
     }
@@ -43,7 +43,10 @@ class UI {
       let title = gifsBuscados[i].title;
       gifsResultados.innerHTML += `<div class="tendencias-gifs"><img src="${gifsBuscados[i].images.original.url}" alt="${
         gifsBuscados[i].title
-      }"><div class="cabecera">#${title.substring(0, title.indexOf("GIF")).replace(/ /g, " #")}</div></div>`;
+      }"><div class="cabecera">#${title
+        .substring(0, title.indexOf("GIF"))
+        .replace(/ /g, " #")
+        .substring(0, title.length / 3)}</div></div>`;
     }
   }
 
